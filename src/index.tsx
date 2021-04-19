@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./style/index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import smoothscroll from "smoothscroll-polyfill";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "react-toastify/dist/ReactToastify.css";
 
-const queryClient = new QueryClient();
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "./style/index.css";
+
+export const queryClient = new QueryClient();
 
 // kick off the polyfill!
 smoothscroll.polyfill();

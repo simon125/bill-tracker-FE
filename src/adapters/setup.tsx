@@ -1,5 +1,5 @@
 import React from "react";
 
-export const usePrivateApi = () => {
+export const setup = () => {
   return <div></div>;
 };
