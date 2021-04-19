@@ -1,5 +1,4 @@
 import React from "react";
-import { FieldError } from "react-hook-form";
 import styled from "styled-components";
 
 const InputWrapper = styled.div`
@@ -80,7 +79,7 @@ export const Input: React.FC<InputPorps> = ({
   error,
   onInput,
 }) => {
-  console.log(error);
+  // TODO: some unexpected rerender consider React.memo
   return (
     <InputWrapper style={inputWrapperStyle}>
       <StyledInput
