@@ -16,7 +16,7 @@ export type AuthFormInputs = {
 };
 
 const AUTH_FORM_SCHEMA = yup.object().shape({
-  authForm: yup.string().nullable(true),
+  authForm: yup.string(),
   email: yup.string().email().required(),
   username: yup.string().when("authForm", {
     is: AuthForm.SIGN_UP,
@@ -27,6 +27,7 @@ const AUTH_FORM_SCHEMA = yup.object().shape({
     is: AuthForm.SIGN_UP,
     then: yup
       .string()
+      .required()
       .test("passwords-match", "Passwords must match", function (value) {
         return this.parent.password === value;
       }),

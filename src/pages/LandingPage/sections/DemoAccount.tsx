@@ -1,18 +1,53 @@
 import React from "react";
-import { Typography } from "../../../components/Typography/Typography";
+import { Typography } from "components/Typography/Typography";
 import { Feature } from "./Feature";
+import { ReactComponent as PlayArrow } from "../../../assets/logo/playArrow.svg";
+import styled from "styled-components";
 
-export const DemoAccount: React.FC = () => {
+const PlayArrowContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(200, 200, 200, 0.695);
+  box-shadow: 1px 1px 65px 61px rgba(200, 200, 200, 0.695);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background: rgba(220, 220, 220, 0.695);
+    box-shadow: 1px 1px 65px 61px rgba(220, 220, 220, 0.695);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+`;
+
+export const DemoAccount: React.FC<{ openModalWithDemo: () => void }> = ({
+  openModalWithDemo,
+}) => {
   return (
     <Feature
       greyBg
       leftColumn={
-        <div data-aos="fade-right" data-aos-offset="150">
+        <div
+          className="dupa"
+          data-aos="fade-right"
+          data-aos-offset="150"
+          style={{ position: "relative" }}
+        >
           <img
             src="/images/computer.png"
             alt=""
-            style={{ width: "90vw", display: "block", margin: "20px auto" }}
+            style={{
+              width: window.innerWidth > 992 ? "80%" : "90vw",
+              display: "block",
+              margin: "20px auto",
+            }}
           />
+          <PlayArrowContainer tabIndex={1} onClick={openModalWithDemo}>
+            <PlayArrow />
+          </PlayArrowContainer>
         </div>
       }
       rightColumn={
@@ -51,6 +86,7 @@ export const DemoAccount: React.FC = () => {
             and even more, and it's still customizable.
           </Typography>
           <button
+            onClick={() => console.log(123333)}
             style={{
               whiteSpace: "nowrap",
               color: "#1A212F",

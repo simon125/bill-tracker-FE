@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../../../assets/logo/logo-mobile.svg";
-import { Col, Row } from "../../../components/Layout";
-import { MobileHero } from "../../../types";
+import { MobileHero } from "types";
 import { NavigationDesktop } from "../components";
 import { NavigationMobile } from "../components/NavigationMobile";
 
@@ -19,41 +18,73 @@ const HeaderBackground = styled.div<{ isScrolled: boolean }>`
     isScrolled ? "translateY(0)" : "translateY(-100%)"};
 `;
 
+const FlexContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: top;
+  flex-wrap: wrap;
+  padding: 25px;
+
+  /* @media screen and (min-width: 768px) {
+    padding: 50px;
+  } */
+
+  @media screen and (min-width: 992px) {
+    padding: 25px 50px;
+    align-items: center;
+
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 1400px) {
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+`;
+
+const FlexCol = styled.div`
+  /* flex-basis: 40%; */
+`;
+
 export const Header: React.FC<{
   isScrolledDown: boolean;
   mobileHero: MobileHero;
+  activeNavLink: number;
   setMobileHero: (mobileHero: MobileHero) => void;
-}> = ({ isScrolledDown, setMobileHero, mobileHero }) => {
+}> = ({ isScrolledDown, setMobileHero, mobileHero, activeNavLink }) => {
   return (
     <header
       style={{
-        maxHeight: 85,
+        maxHeight: 100,
         position: "fixed",
         zIndex: 100,
         width: "100%",
-        padding: "15px 20px 10px 20px",
       }}
     >
       <HeaderBackground isScrolled={isScrolledDown} />
-      <Row horizonal="between" vertical="stretch">
-        <Col xs="10" md="3">
+      <FlexContainer>
+        <FlexCol>
           <img
             src={logo}
             alt="Brand of bill tracker"
             style={{ position: "relative" }}
           />
-        </Col>
-        <Col xs="2" md="9">
+        </FlexCol>
+        <FlexCol>
           {window.innerWidth < 992 ? (
             <NavigationMobile
               setMobileHero={setMobileHero}
               mobileHero={mobileHero}
             />
           ) : (
-            <NavigationDesktop />
+            <NavigationDesktop activeNavLink={activeNavLink} />
           )}
-        </Col>
-      </Row>
+        </FlexCol>
+      </FlexContainer>
     </header>
   );
 };

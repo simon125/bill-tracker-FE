@@ -10,7 +10,7 @@ interface StyledNavigationMenuProps {
   open: boolean;
 }
 
-const NavigationMenu = styled.div<StyledNavigationMenuProps>`
+const NavigationMenu = styled.nav<StyledNavigationMenuProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -30,6 +30,8 @@ const MenuItems = styled.ul`
   list-style: none;
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column;
 `;
 
 const MenuItem = styled.li`
@@ -57,7 +59,7 @@ export const NavigationMobile: React.FC<{
     handleHamburgerClick();
     setTimeout(() => {
       const section = document.getElementById(href);
-      const yOffset = -84;
+      const yOffset = -100;
       if (section) {
         const y =
           section.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -107,7 +109,7 @@ export const NavigationMobile: React.FC<{
         <img
           src={shortLogo}
           alt="Shorten brand"
-          style={{ margin: "15px 0 0 15px" }}
+          style={{ margin: "25px 0 0 25px" }}
         />
         <MenuItems>
           {ANCHORS_CONFIG.map(({ label, id }) => {

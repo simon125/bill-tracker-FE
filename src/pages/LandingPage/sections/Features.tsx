@@ -12,7 +12,11 @@ export const Features = () => {
             <img
               src="/images/feature1.svg"
               alt=""
-              style={{ width: "80vw", display: "block", margin: "20px auto" }}
+              style={{
+                width: window.innerWidth > 992 ? "100%" : "70vw",
+                display: "block",
+                margin: "20px auto",
+              }}
             />
           </div>
         }
@@ -74,7 +78,11 @@ export const Features = () => {
             <img
               src="/images/feature2.svg"
               alt=""
-              style={{ width: "80vw", display: "block", margin: "20px auto" }}
+              style={{
+                width: window.innerWidth > 992 ? "100%" : "70vw",
+                display: "block",
+                margin: "20px auto",
+              }}
             />
           </div>
         }
@@ -86,7 +94,11 @@ export const Features = () => {
             <img
               src="/images/feature3.svg"
               alt=""
-              style={{ width: "50vw", display: "block", margin: "20px auto" }}
+              style={{
+                width: window.innerWidth > 992 ? "60%" : "50vw",
+                display: "block",
+                margin: "20px auto",
+              }}
             />
           </div>
         }
@@ -148,7 +160,11 @@ export const Features = () => {
             <img
               src="/images/feature4.svg"
               alt=""
-              style={{ width: "70vw", display: "block", margin: "20px auto" }}
+              style={{
+                width: window.innerWidth > 992 ? "100%" : "70vw",
+                display: "block",
+                margin: "20px auto",
+              }}
             />
           </div>
         }

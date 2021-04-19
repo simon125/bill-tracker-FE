@@ -1,31 +1,46 @@
 import React, { useState } from "react";
 import { useSignUpInForm, AuthForm, AuthFormInputs } from "./useSignUpInForm";
 import { Input } from "components";
-import { usePublicApi } from "hooks/usePublicApi";
+import {
+  IdentityAxiosResponse,
+  useSignInMutation,
+  useSignUpMutation,
+} from "hooks/api/usePublicRequest";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "contexts/AuthContext";
 
 export const SignUpInForm: React.FC = () => {
   const [authForm, setAuthForm] = useState<AuthForm>(AuthForm.SIGN_UP);
 
   const { register, handleSubmit, errors, clearErrors } = useSignUpInForm();
 
-  const onSuccess = (test: unknown) => {
-    console.log("JUPI");
-    console.log(test);
-    debugger;
+  const onSuccess = (response: IdentityAxiosResponse) => {
+    const {
+      data: { accessToken, refreshToken, expiresAt },
+    } = response;
+
+    setAuthState({
+      newAccessToken: accessToken,
+      newRefreshToken: refreshToken,
+      newExpiresAt: expiresAt,
+    });
+
+    history.push("/expenses");
   };
 
-  const onError = (msg: string) => {
-    console.error(msg);
-    debugger;
-  };
+  const { setAuthState } = useAuth();
 
-  const { signUp, signIn } = usePublicApi(onSuccess, onError);
+  const history = useHistory();
+
+  const { mutate: signIn } = useSignInMutation(onSuccess);
+
+  const { mutate: signUp } = useSignUpMutation(onSuccess);
 
   const onSubmit = handleSubmit(({ email, username, password, authForm }) => {
     if (authForm === AuthForm.SIGN_UP) {
-      signUp({ username, emailAddress: email, password });
+      signUp({ userName: username, emailAddress: email, password });
     } else {
-      signIn(email, password);
+      signIn({ emailAddressOrUserName: email, password });
     }
   });
 
@@ -51,6 +66,8 @@ export const SignUpInForm: React.FC = () => {
           flexDirection: "column",
           padding: 20,
           background: "rgba(49, 65, 80, 0.7)",
+          maxWidth: "400px",
+          margin: "0 auto",
         }}
       >
         <div
@@ -78,6 +95,7 @@ export const SignUpInForm: React.FC = () => {
               width: 70,
               textAlign: "center",
               display: "inline-block",
+              cursor: "pointer",
             }}
           >
             SIGN UP
@@ -99,6 +117,7 @@ export const SignUpInForm: React.FC = () => {
               width: 70,
               textAlign: "center",
               display: "inline-block",
+              cursor: "pointer",
             }}
           >
             SIGN IN
@@ -169,7 +188,7 @@ export const SignUpInForm: React.FC = () => {
             fontSize: "1.2rem",
             display: "block",
             width: "100%",
-            margin: "30px auto 0 auto",
+            margin: "0 auto",
           }}
         >
           <span
