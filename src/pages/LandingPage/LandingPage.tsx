@@ -110,7 +110,6 @@ export const LandingPage: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleWindowScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -8,7 +8,11 @@ function getWindowDimensions() {
   };
 }
 
-export default function useWindowDimensions() {
+export default function useWindowDimensions(): {
+  width: number;
+  height: number;
+  isMobileDevice: boolean;
+} {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -22,5 +26,7 @@ export default function useWindowDimensions() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return windowDimensions;
+  const isMobileDevice = windowDimensions.width <= 992;
+
+  return { ...windowDimensions, isMobileDevice };
 }

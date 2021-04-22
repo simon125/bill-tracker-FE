@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { ANCHORS_CONFIG } from "../landingPageAnchorsConfigs";
-import shortLogo from "../../../assets/logo/short-logo.svg";
-import { HamburgerButton } from "./HamburgerButton";
-import { MobileHero } from "../../../types";
+import shortLogo from "assets/logo/short-logo.svg";
+import { HamburgerButton } from "components";
+import { MobileHero } from "types";
 
 interface StyledNavigationMenuProps {
   open: boolean;

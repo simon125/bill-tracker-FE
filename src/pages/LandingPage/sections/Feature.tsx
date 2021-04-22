@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Col, Container, Row } from "../../../components/Layout";
+// import { Col, Container, Row } from "../../../components/Layout";
 
 const SectionContainer = styled.div<{ reverse?: boolean }>`
   display: flex;

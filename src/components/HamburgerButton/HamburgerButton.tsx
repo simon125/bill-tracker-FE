@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledHamburgerButton = styled.button`
@@ -48,21 +48,34 @@ const StyledHamburgerButton = styled.button`
 interface HamburgerButtonProps {
   handleClick: () => void;
   open: boolean;
+  color?: string;
+  style?: React.CSSProperties;
 }
 
 export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   handleClick,
   open,
+  color = "white",
+  style,
 }) => {
   const handleHamburgerButtonClick = () => {
     handleClick();
   };
 
   return (
-    <StyledHamburgerButton onClick={handleHamburgerButtonClick}>
-      <span className={`item item1 ${open && "open"}`}></span>
-      <span className={`item item2 ${open && "open"}`}></span>
-      <span className={`item item3 ${open && "open"}`}></span>
+    <StyledHamburgerButton onClick={handleHamburgerButtonClick} style={style}>
+      <span
+        style={{ borderColor: color }}
+        className={`item item1 ${open && "open"}`}
+      ></span>
+      <span
+        style={{ borderColor: color }}
+        className={`item item2 ${open && "open"}`}
+      ></span>
+      <span
+        style={{ borderColor: color }}
+        className={`item item3 ${open && "open"}`}
+      ></span>
     </StyledHamburgerButton>
   );
 };

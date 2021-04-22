@@ -1,5 +1,5 @@
-import { useAuth } from "contexts/AuthContext";
 import React from "react";
+import { useAuth } from "contexts/AuthContext";
 import { NavigationItem } from "./NavigationItem";
 
 const NAV_ITEMS = [
@@ -45,8 +45,8 @@ export const Navigation: React.FC = () => {
   return (
     <nav style={{ height: "100%" }}>
       <ul style={{ height: "100%" }}>
-        {NAV_ITEMS.map((navItemProps) => (
-          <NavigationItem {...navItemProps} />
+        {NAV_ITEMS.map((navItemProps, idx) => (
+          <NavigationItem key={idx} {...navItemProps} />
         ))}
         <NavigationItem
           action={handleLogoutClick}
