@@ -7,6 +7,28 @@ export const usePrivateRequest = () => {
   return <div></div>;
 };
 
+export const useGetExpense = () => {
+  // it will come from react-router-dom push with state
+  const getExepnse = async () => {
+    return await console.log(123);
+  };
+  return { getExepnse };
+};
+
+export const useCreateExpense = () => {
+  const createExpense = async () => {
+    return await console.log(123);
+  };
+  return { createExpense };
+};
+
+export const useUpdateExpense = () => {
+  const updateExpense = async () => {
+    return await console.log(123);
+  };
+  return { updateExpense };
+};
+
 // const useGetExepnses = (
 //   pageNumber: number,
 //   pageSize: number,

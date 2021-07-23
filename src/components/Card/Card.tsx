@@ -1,9 +1,13 @@
 import React from "react";
+import { Space, space } from "style/spacing";
 import styled from "styled-components";
 
-const StyledCard = styled.section`
+const StyledCard = styled.section<Space>`
   background: #2c3a47;
   margin-bottom: 30px;
+  width: 100%;
+
+  ${space}
 `;
 
 const Heading = styled.h2`
@@ -15,14 +19,20 @@ const Heading = styled.h2`
   padding: 10px;
 `;
 
-interface CardProps {
+interface CardProps extends Space {
   children: React.ReactNode;
   heading?: string;
+  style?: React.CSSProperties;
 }
 
-export const Card: React.FC<CardProps> = ({ children, heading }) => {
+export const Card: React.FC<CardProps> = ({
+  children,
+  heading,
+  style,
+  ...rest
+}) => {
   return (
-    <StyledCard>
+    <StyledCard style={style} {...rest}>
       {heading && <Heading>{heading}</Heading>}
       <div style={{ padding: 20 }}>{children}</div>
     </StyledCard>

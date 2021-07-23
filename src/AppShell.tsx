@@ -5,23 +5,23 @@ import { LARGE_SCREEN, SMALL_SCREEN } from "style/rwdBreakboints";
 
 const AppContainer = styled.div`
   display: flex;
-  margin-top: 70px;
-
-  @media screen and (min-width: ${SMALL_SCREEN}) {
-    margin-top: 100px;
-  }
+  min-height: 100%;
+  background: #1d212a;
 `;
 
 const AppContent = styled.main`
-  height: calc(100% - 70px);
-  padding: 40px;
+  min-height: 100%;
   width: 100%;
+  margin-top: 70px;
+  padding-bottom: 70px;
+  padding: 10px;
 
   @media screen and (min-width: ${SMALL_SCREEN}) {
-    height: calc(100% - 100px);
+    padding: 20px;
   }
 
   @media screen and (min-width: ${LARGE_SCREEN}) {
+    padding: 40px;
     padding-left: 180px;
   }
 `;

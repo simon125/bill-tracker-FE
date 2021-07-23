@@ -22,8 +22,8 @@ const Aside = styled.aside<AsideProps>`
     isOpen ? "translateX(0)" : "translateX(-100%)"};
 
   @media screen and (min-width: ${SMALL_SCREEN}) {
-    top: 100px;
-    height: calc(100% - 100px);
+    top: 70px;
+    height: calc(100% - 70px);
     width: 150px;
   }
 `;

@@ -33,6 +33,11 @@ const App: React.FC = () => {
                     <Dashboard />
                   </AppShell>
                 </Route>
+                <Route path="/add-expense/:id">
+                  <AppShell>
+                    <BillWizard />
+                  </AppShell>
+                </Route>
                 <Route path="/add-expense">
                   <AppShell>
                     <BillWizard />

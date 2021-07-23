@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   },
   {
     iconName: "bill-editor.svg",
-    label: "Add expense",
+    label: "Expense wizard",
     path: "add-expense",
     bgColor: "#EF657C",
   },

@@ -2,10 +2,10 @@ import { HamburgerButton } from "components";
 import { useMobileNavigation } from "contexts/MobileAppNavigation";
 import useWindowDimensions from "hooks/useWindowDimensions";
 import React from "react";
-import { SMALL_SCREEN } from "style/rwdBreakboints";
 import styled from "styled-components";
 import { Logo } from "./Logo";
 import { useLocation } from "react-router-dom";
+import { ReactComponent as Icons } from "./Icon.svg";
 
 const HeaderContainer = styled.header`
   width: 100%;
@@ -18,10 +18,6 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media screen and (min-width: ${SMALL_SCREEN}) {
-    height: 100px;
-  }
 `;
 
 const PageName = styled.h2`
@@ -56,6 +52,7 @@ export const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <Logo />
+      {/* <Icons style={{ transform: "scale(0.75)" }} /> */}
       {isMobileDevice && (
         <>
           <PageName>{PAGE_NAME[pathname as PageNameKeys]}</PageName>

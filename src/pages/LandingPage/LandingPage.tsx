@@ -53,28 +53,30 @@ export const LandingPage: React.FC = () => {
           demoRef.current?.offsetTop !== undefined &&
           contactRef.current?.offsetTop !== undefined
         ) {
-          const ranges = [
-            heroRef.current.offsetTop + heroRef.current.clientHeight,
-            featuresRef.current.offsetTop + featuresRef.current.clientHeight,
-            demoRef.current.offsetTop + demoRef.current.clientHeight,
-          ];
+          const temp1 =
+            heroRef.current.offsetTop + heroRef.current.clientHeight;
+          const temp2 =
+            featuresRef.current.offsetTop + featuresRef.current.clientHeight;
+          const temp3 =
+            demoRef.current.offsetTop + demoRef.current.clientHeight;
+
           const currentScroll = window.scrollY + window.innerHeight / 2;
 
-          if (currentScroll <= ranges[0] && activeNavLink !== 0) {
+          if (currentScroll <= temp1 && activeNavLink !== 0) {
             setActiveNavLink(0);
           } else if (
-            currentScroll > ranges[0] &&
-            currentScroll <= ranges[1] &&
+            currentScroll > temp1 &&
+            currentScroll <= temp2 &&
             activeNavLink !== 1
           ) {
             setActiveNavLink(1);
           } else if (
-            currentScroll > ranges[1] &&
-            currentScroll <= ranges[2] &&
+            currentScroll > temp2 &&
+            currentScroll <= temp3 &&
             activeNavLink !== 2
           ) {
             setActiveNavLink(2);
-          } else if (currentScroll > ranges[2] && activeNavLink !== 3) {
+          } else if (currentScroll > temp3 && activeNavLink !== 3) {
             setActiveNavLink(3);
           }
         }
