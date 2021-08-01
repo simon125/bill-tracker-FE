@@ -63,6 +63,7 @@ export const SingleExpenseTypeGrid: React.FC = () => {
         delete: JSX.Element;
         drag: JSX.Element;
       }>
+      maxHeight="300px"
         header={[
           { label: "" },
           { label: "Name", action: (label) => console.log(label) },

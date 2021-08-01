@@ -22,6 +22,12 @@ const TableHeadRow = styled.th`
   width: 100%;
 `;
 
+const TBody = styled.tbody<{maxHeight?: string}>`
+  display: block; 
+  max-height: ${({maxHeight})=>maxHeight}; 
+  overflow-y: auto;
+`
+
 interface DatatableProps<T> {
   data: Array<T>;
   header: Array<{ label?: string; action?(label: string): void }>;
@@ -32,7 +38,7 @@ interface DatatableProps<T> {
 
 // export const Datatable: React.FC<DatatableProps<T>> = ({
 export const Datatable = <T extends {}>(props: DatatableProps<T>) => {
-  const { data, header, columns, propertyAsKey } = props;
+  const { data, header, columns, propertyAsKey, maxHeight } = props;
   return (
     <StyledDatatable>
       <DatatableHead>
@@ -54,7 +60,7 @@ export const Datatable = <T extends {}>(props: DatatableProps<T>) => {
           })}
         </TableHeadRow>
       </DatatableHead>
-      <tbody style={{ display: "block", maxHeight: 100, overflowY: "auto" }}>
+      <TBody maxHeight={maxHeight}>
         {data.map((rowData) => (
           <DatatableRow<T>
             key={(rowData[propertyAsKey] as unknown) as string}
@@ -62,7 +68,7 @@ export const Datatable = <T extends {}>(props: DatatableProps<T>) => {
             columns={columns}
           />
         ))}
-      </tbody>
+      </TBody>
     </StyledDatatable>
   );
 };

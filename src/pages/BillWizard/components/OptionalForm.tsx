@@ -11,7 +11,7 @@ export const OptionalForm: React.FC = () => {
             { label: "test2", value: "TEST2" },
             { label: "test3", value: "TEST3" },
           ]}
-          value={"null"}
+          value={"spożywasdasdafsdadscze"}
           onSelect={() => ({})}
         />
       </div>

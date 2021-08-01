@@ -33,8 +33,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: 6px 20px;
   width: ${({ block }) => (block ? "100%" : "auto")};
   height: 37px;
-
-  display: inline-block;
   white-space: nowrap;
   background: ${({ mode }) => BG[mode]};
   border: ${({ mode }) => (mode === "light" ? "#eee" : COLOR[mode])} 1px solid;
@@ -52,23 +50,29 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
+
+const ButtonLabel = styled.span`
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  display: block;
+`
 interface ButtonProps {
   label: string;
   block?: boolean;
   mode?: ButtonMode;
-  onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   type?: "submit" | "button" | "reset";
   style?: React.CSSProperties;
+  onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   label,
   mode = "dark",
   block = false,
-  onClick,
   children,
   type = "button",
   style,
+  onClick,
 }) => {
   return (
     <StyledButton
@@ -77,8 +81,11 @@ export const Button: React.FC<ButtonProps> = ({
       block={block}
       onClick={onClick}
       mode={mode}
+      title={label}
     >
+      <ButtonLabel>
       {label}
+      </ButtonLabel>
       {children}
     </StyledButton>
   );

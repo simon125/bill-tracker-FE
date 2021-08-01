@@ -1,10 +1,11 @@
 import { RadioButton } from "components/RadioButton/RadioButton";
 import React, { useEffect } from "react";
+import { LARGE_SCREEN, MEDIUM_SCREEN } from 'style/rwdBreakboints';
 import styled from "styled-components";
 
 const TileContainer = styled.div<{ checked: boolean }>`
-  padding: 20px;
-  width: 400px;
+  padding: 10px;
+  width: 200px;
   background: #2c3a47;
   outline: ${({ checked }) => (checked ? "3px solid #fff" : "none")};
 
@@ -13,6 +14,11 @@ const TileContainer = styled.div<{ checked: boolean }>`
   * {
     cursor: pointer;
   }
+
+  @media screen and (min-width: ${MEDIUM_SCREEN}) {
+    padding: 20px;
+    width: 400px;
+  } 
 `;
 
 const Heading = styled.h2`
@@ -21,12 +27,24 @@ const Heading = styled.h2`
 
 const Subheading = styled.p`
   font-size: 1rem;
+  display: none;
+
+
+  @media screen and (min-width: ${MEDIUM_SCREEN}) {
+    display: flex;
+  } 
 `;
 
 const Label = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+
+
+
+ 
+
 `;
 
 interface TileRadioButtonProps {
@@ -58,10 +76,13 @@ export const TileRadioButton: React.FC<TileRadioButtonProps> = ({
     >
       <Label htmlFor={label}>
         <RadioButton name={name} checked={checked} value={value} />
+        <div style={{display: 'flex', alignItems: 'center'}}>
         <span style={{ margin: "0 5px 0 10px" }}>{icon}</span>
         <div>
           <Heading>{heading}</Heading>
           <Subheading>{label}</Subheading>
+        </div>
+          
         </div>
       </Label>
     </TileContainer>

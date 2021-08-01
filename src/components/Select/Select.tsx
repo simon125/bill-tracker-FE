@@ -22,7 +22,7 @@ const OptionsContainer = styled.div<OptionsContainerProsp>`
 
   /* margin-top: ${({ isOpen }) => (isOpen ? "0" : "-10px")}; */
   visibility: ${({ isOpen }) => (isOpen ? "visble" : "hidden")};
-  transition: all 0.1s ease-in-out;
+  /* transition: all 0.1s ease-in-out; */
 `;
 
 const Option = styled.div`
@@ -90,7 +90,6 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             marginLeft: 5,
             transform: isOpen ? "rotate(-180deg)" : "",
-            transition: "all 0.15s linear",
           }}
         />
       </Button>
