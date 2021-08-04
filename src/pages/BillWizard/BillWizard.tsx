@@ -71,7 +71,7 @@ export const BillWizard: React.FC = () => {
           </FlexContainer>
 
           <Masonry123 breakpointCols={2}>
-            <Card>
+            {/* <Card>
               <SingleExpenseTypeGrid />
             </Card>
             <Card>
@@ -85,7 +85,7 @@ export const BillWizard: React.FC = () => {
             </Card>
             <Card>
               <SingleExpenseTypeGrid />
-            </Card>
+            </Card> */}
           </Masonry123>
         </>
       )}

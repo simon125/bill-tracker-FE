@@ -17,7 +17,6 @@ const DatatableHead = styled.thead`
 const TableHeadRow = styled.th`
   text-align: left;
   border-bottom: 2px solid #eee;
-
   display: table;
   width: 100%;
 `;

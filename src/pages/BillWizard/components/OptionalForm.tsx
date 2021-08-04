@@ -3,7 +3,7 @@ import React from "react";
 
 export const OptionalForm: React.FC = () => {
   return (
-    <Card heading="Add Grouped Expense">
+    <Card heading="Add Grouped Expense" style={{ height: 270 }}>
       <div style={{ width: "29%", margin: "10px 0 30px 0" }}>
         <Select
           options={[

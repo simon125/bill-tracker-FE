@@ -126,13 +126,13 @@ const data = [
 
 export const ExpensesSummary: React.FC = () => {
   return (
-    <Card heading="Expenses Summary" >
+    <Card heading="Expenses Summary" style={{ height: 270 }}>
       <Datatable<{
         id: number;
         name: string;
         price: string;
       }>
-      maxHeight="140px"
+        maxHeight="140px"
         header={[
           { label: "Expense type", action: (label) => console.log(label) },
           { label: "Total price" },
