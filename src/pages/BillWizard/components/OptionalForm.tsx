@@ -18,16 +18,17 @@ export const OptionalForm: React.FC = () => {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ width: "29%" }}>
           <Input
+            value=""
             label="NAME"
             id="particularExpenseName"
             name="particularExpenseName"
           />
         </div>
         <div style={{ width: "29%" }}>
-          <Input label="PRICE" id="expenseName" name="expenseName" />
+          <Input value="" label="PRICE" id="expenseName" name="expenseName" />
         </div>
         <div style={{ width: "29%" }}>
-          <Input label="AMOUNT" id="expenseName" name="expenseName" />
+          <Input value="" label="AMOUNT" id="expenseName" name="expenseName" />
         </div>
       </div>
       <div

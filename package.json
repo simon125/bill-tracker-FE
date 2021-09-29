@@ -45,6 +45,9 @@
       "react-app",
       "react-app/jest"
     ],
+    "rules": {
+      "@typescript-eslint/no-implicit-any-catch": "error"
+    },
     "overrides": [
       {
         "files": [

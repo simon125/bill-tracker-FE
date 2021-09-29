@@ -5,6 +5,7 @@ import { AuthAxiosProvider } from "./AuthAxiosContext";
 
 import { BrowserRouter } from "react-router-dom";
 import { MobileAppNavigationProvider } from "contexts/MobileAppNavigation";
+import { BillWizardProvider } from "./BillWizardContext";
 
 export const queryClient = new QueryClient();
 

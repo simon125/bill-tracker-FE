@@ -21,11 +21,11 @@ const TableHeadRow = styled.th`
   width: 100%;
 `;
 
-const TBody = styled.tbody<{maxHeight?: string}>`
-  display: block; 
-  max-height: ${({maxHeight})=>maxHeight}; 
+const TBody = styled.tbody<{ maxHeight?: string }>`
+  display: block;
+  max-height: ${({ maxHeight }) => maxHeight};
   overflow-y: auto;
-`
+`;
 
 interface DatatableProps<T> {
   data: Array<T>;

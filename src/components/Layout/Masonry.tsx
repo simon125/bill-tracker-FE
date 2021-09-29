@@ -1,18 +1,18 @@
 import React from "react";
-import Masonry from "react-masonry-css";
+import MasonryContainer from "react-masonry-css";
 import "./masonary.css";
 
-export const Masonry123: React.FC<{ breakpointCols: number }> = ({
+export const Masonry: React.FC<{ breakpointCols: number }> = ({
   breakpointCols,
   children,
 }) => {
   return (
-    <Masonry
+    <MasonryContainer
       breakpointCols={{ default: breakpointCols, 960: 1 }}
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >
       {children}
-    </Masonry>
+    </MasonryContainer>
   );
 };

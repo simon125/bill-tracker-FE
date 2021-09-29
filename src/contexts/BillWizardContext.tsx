@@ -1,5 +1,6 @@
 import { FormType } from "pages";
 import React, { useContext, createContext, useState } from "react";
+import { useAuthAxios } from "./AuthAxiosContext";
 
 const BillWizardContext = createContext<IBillWizard | null>(null);
 
@@ -16,23 +17,44 @@ interface ExpenseItem {
 }
 
 const useBillWizard = () => {
+const {get, post} = useAuthAxios();
+
+  const mutation = useMutation(newTodo => post('/todos', newTodo))
+
+
+  /* Metadata */
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>();
-  // const [paymentMethods, setP] = useState<PaymentMethod[]>();
+  const [budget, setBudget] = useState<PaymentMethod[]>();
+  const [expenseTypes, setExpenseTypes] = useState<PaymentMethod[]>();
 
   const [formType, setFormType] = useState<FormType>(FormType.QUICK_ADD);
+
+  /* Quick add */
   const [billName, setBillName] = useState<string>("");
   const [totalPrice, setTotalPrice] = useState<string>("");
+  // TODO: move it to Date type
   const [transactionDate, setTransactionDate] = useState<string>("");
-  const [billImage, setBillImage] = useState<string[]>([]);
+
+  /* Add with details */
+  const [billImages, setBillImages] = useState<string[]>([]);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>({
     id: "selectPaymentMethod",
     label: "",
   });
   const [note, setNote] = useState<string>("");
-
   const [expenseItems, setExpenseItem] = useState<Map<string, ExpenseItem[]>>(
     new Map()
   );
+
+  const submitForm = () => {
+
+    
+
+
+    console.log();
+    // validation
+    // send request or info about validation
+  };
 
   return {
     models: {
@@ -41,17 +63,18 @@ const useBillWizard = () => {
       totalPrice,
       transactionDate,
       paymentMethods,
-      billImage,
+      billImages,
       paymentMethod,
       note,
       expenseItems,
     },
     operations: {
+      submitForm,
       setFormType,
       setBillName,
       setTotalPrice,
       setTransactionDate,
-      setBillImage,
+      setBillImages,
       setPaymentMethod,
       setNote,
       setExpenseItem,
@@ -61,7 +84,7 @@ const useBillWizard = () => {
 
 type IBillWizard = ReturnType<typeof useBillWizard>;
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const BillWizardProvider: React.FC = ({ children }) => {
   const value = useBillWizard();
 
   return (
@@ -71,10 +94,10 @@ export const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-export const useBillWizardCtx = () => {
+export const useBillWizardContext = () => {
   const context = useContext(BillWizardContext);
 
-  if (context === undefined) {
+  if (!context) {
     throw new Error(
       "BillWizardContext must be used within an BillWizardContextProvider"
     );

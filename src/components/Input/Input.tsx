@@ -58,6 +58,7 @@ interface InputPorps {
   label: string;
   name: string;
   id: string;
+  value: string;
   type?: string;
   inputRef?:
     | ((instance: HTMLInputElement | null) => void)
@@ -66,18 +67,19 @@ interface InputPorps {
   inputWrapperStyle?: React.CSSProperties;
   style?: React.CSSProperties;
   error?: string;
-  onInput?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputPorps> = ({
   label,
   inputWrapperStyle,
   name,
+  value,
   id,
   inputRef,
   type = "text",
   error,
-  onInput,
+  onChange,
 }) => {
   // TODO: some unexpected rerender consider React.memo
   return (
@@ -87,11 +89,12 @@ export const Input: React.FC<InputPorps> = ({
         autoComplete="off"
         ref={inputRef}
         type={type}
+        value={value}
         name={name}
         id={id}
         style={{}}
         placeholder=" "
-        // onChange={onInput}
+        onChange={onChange}
       />
       <FloatingLablel htmlFor={name} style={{}} hasError={!!error}>
         {label}

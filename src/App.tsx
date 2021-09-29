@@ -13,6 +13,7 @@ import {
 import { Switch, Route } from "react-router-dom";
 import { AppShell } from "AppShell";
 import { AppProviders } from "contexts/AppProvider";
+import { BillWizardProvider } from "contexts/BillWizardContext";
 
 const App: React.FC = () => {
   return (
@@ -35,7 +36,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/add-expense">
             <AppShell>
-              <BillWizard />
+              <BillWizardProvider>
+                <BillWizard />
+              </BillWizardProvider>
             </AppShell>
           </Route>
           <Route path="/expenses">
