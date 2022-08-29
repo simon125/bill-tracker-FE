@@ -24,7 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.3",
-    "sanitize-html": "^2.3.2",
+    "sanitize-html": "^2.7.1",
     "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.2.1",
     "typescript": "^4.2.2",
